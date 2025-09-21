@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Rubik, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const rubik = Rubik({
   subsets: ["latin"],
+  variable: "--font-rubik",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweatherSans = Merriweather_Sans({
   subsets: ["latin"],
+  variable: "--font-merriweather-sans",
 });
 
 export const metadata: Metadata = {
@@ -23,10 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang="en"
+      className={`${rubik.variable} ${merriweatherSans.variable} dark`}
+    >
+      <body className="bg-obsidian-bg text-obsidian-fg font-sans min-h-screen">
         {children}
       </body>
     </html>
