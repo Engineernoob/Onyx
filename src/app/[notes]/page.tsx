@@ -4,7 +4,7 @@ import { getNoteSlugs, getNoteBySlug } from "../../lib/markdown";
 
 export async function generateStaticParams() {
   const slugs = getNoteSlugs().map((f) => f.replace(/\.md$/, ""));
-  return slugs.map((slug) => ({ note: slug }));
+  return slugs.map((slug) => ({ note: slug })); // must match [note]
 }
 
 export default function NotePage({ params }: { params: { note: string } }) {
