@@ -1,24 +1,30 @@
 import Link from "next/link";
+import { getNoteBySlug, getNoteSlugs } from "../lib/markdown";
 
 export default function Home() {
-  const sampleNotes = ["SICP", "Resilient-Systems"];
+  const slugs = getNoteSlugs().map((f) => f.replace(/\.md$/, ""));
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">My Knowledge Base</h1>
-
+      <h1 className="text-3xl font-bold mb-6">Onyx</h1>
+      <Link
+        href="/graph"
+        className="block mb-4 text-obsidian-accent hover:underline"
+      >
+        📊 View Graph
+      </Link>
       <p className="mb-4 text-obsidian-muted">
-        Welcome! Select a note to get started:
+        Welcome! Select a note or create to get started:
       </p>
 
       <ul className="list-disc list-inside space-y-2">
-        {sampleNotes.map((note) => (
-          <li key={note}>
+        {slugs.map((slug) => (
+          <li key={slug}>
             <Link
-              href={`/${note}`}
+              href={`/${slug}`}
               className="text-obsidian-accent hover:underline"
             >
-              {note}
+              {slug}
             </Link>
           </li>
         ))}
